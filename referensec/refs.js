@@ -8,6 +8,4 @@ export default {
   lightBoxImage: document.querySelector('.lightbox__image'),
 
   modalCloseBtn: document.querySelector('[data-action="close-lightbox"]'),
-
-  modalCloseOverlay: document.querySelector('.lightbox__button'),
 };

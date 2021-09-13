@@ -1,8 +1,8 @@
 import gallery from './gallery-items.js';
 
-import refs from './referensec/refs.js';
+import refs from '../referensec/refs.js';
 
-const { list, modal, lightBoxImage, modalCloseBtn, modalCloseOverlay } = refs;
+const { list, modal, lightBoxImage, modalCloseBtn } = refs;
 
 function createItems(array) {
   return array
@@ -29,8 +29,7 @@ const markup = createItems(gallery);
 
 list.insertAdjacentHTML('afterbegin', markup);
 
-//open
-
+//open modal
 list.addEventListener('click', e => {
   if (e.target.nodeName === 'IMG') {
     modal.classList.add('is-open');
@@ -41,19 +40,25 @@ list.addEventListener('click', e => {
   }
 });
 
-//close
+function hideModal(element) {
+  modal.classList.remove('is-open');
+  lightboxImage.src = '';
+  lightboxImage.alt = '';
+}
+
+//closing modal
 modal.addEventListener('click', e => {
   if (e.target.classList.contains('lightbox__overlay')) {
-    modal.classList.remove('is-open');
+    hideModal(modal);
   }
 });
 
 window.addEventListener('keydown', e => {
   if (e.code === 'Escape') {
-    modal.classList.remove('is-open');
+    hideModal(modal);
   }
 });
 
 modalCloseBtn.addEventListener('click', () => {
-  modal.classList.remove('is-open');
+  hideModal(modal);
 });
