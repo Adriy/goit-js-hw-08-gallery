@@ -48,7 +48,7 @@ list.addEventListener('click', e => {
 
 function hideModal(element) {
   modal.classList.remove('is-open');
-  setSrcAlt();
+  addSrcAlt();
 }
 
 //closing modal
