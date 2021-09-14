@@ -29,21 +29,26 @@ const markup = createItems(gallery);
 
 list.insertAdjacentHTML('afterbegin', markup);
 
+function addSrcAlt(src, alt) {
+  return;
+}
+
 //open modal
 list.addEventListener('click', e => {
   if (e.target.nodeName === 'IMG') {
     modal.classList.add('is-open');
+    addSrcAlt(
+      (lightBoxImage.src = e.target.dataset.source),
+      (lightBoxImage.alt = e.target.alt),
+    );
 
-    lightBoxImage.src = e.target.dataset.source;
-    lightBoxImage.alt = e.target.alt;
     e.preventDefault();
   }
 });
 
 function hideModal(element) {
   modal.classList.remove('is-open');
-  lightboxImage.src = '';
-  lightboxImage.alt = '';
+  setSrcAlt();
 }
 
 //closing modal
