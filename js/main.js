@@ -29,7 +29,7 @@ const markup = createItems(gallery);
 
 list.insertAdjacentHTML('afterbegin', markup);
 
-function addSrcAlt(src, alt) {
+function addSrcAlt(src = '', alt = '') {
   lightBoxImage.src = src;
   lightBoxImage.alt = alt;
 }
@@ -44,24 +44,24 @@ list.addEventListener('click', e => {
   }
 });
 
-function hideModal(element) {
+function hideModal() {
   modal.classList.remove('is-open');
-  addSrcAlt('', '');
+  addSrcAlt();
 }
 
 //closing modal
 modal.addEventListener('click', e => {
   if (e.target.classList.contains('lightbox__overlay')) {
-    hideModal(modal);
+    hideModal();
   }
 });
 
 window.addEventListener('keydown', e => {
   if (e.code === 'Escape') {
-    hideModal(modal);
+    hideModal();
   }
 });
 
 modalCloseBtn.addEventListener('click', () => {
-  hideModal(modal);
+  hideModal();
 });
