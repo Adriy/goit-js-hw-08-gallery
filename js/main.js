@@ -30,17 +30,15 @@ const markup = createItems(gallery);
 list.insertAdjacentHTML('afterbegin', markup);
 
 function addSrcAlt(src, alt) {
-  return;
+  lightBoxImage.src = src;
+  lightBoxImage.alt = alt;
 }
 
 //open modal
 list.addEventListener('click', e => {
   if (e.target.nodeName === 'IMG') {
     modal.classList.add('is-open');
-    addSrcAlt(
-      (lightBoxImage.src = e.target.dataset.source),
-      (lightBoxImage.alt = e.target.alt),
-    );
+    addSrcAlt(e.target.dataset.source, e.target.alt);
 
     e.preventDefault();
   }
@@ -48,7 +46,7 @@ list.addEventListener('click', e => {
 
 function hideModal(element) {
   modal.classList.remove('is-open');
-  addSrcAlt();
+  addSrcAlt('', '');
 }
 
 //closing modal
